@@ -156,7 +156,7 @@ className="grid grid-cols-1 gap-8 border-t border-gray-100 pt-8 sm:grid-cols-2 l
 </div>
 
 <p className="text-xs text-gray-500 dark:text-gray-400">
-&copy; 2025 Company Name. All rights reserved.
+&copy; 2025 OnMarket team. All rights reserved.
 </p>
 </div>
 </footer>

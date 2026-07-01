@@ -1,9 +1,25 @@
-import Image from "next/image";
+
+import Category from "@/src/component ui/home/Category";
+import Offers from "@/src/component ui/home/Offer";
+import ProductsSection from "@/src/component ui/product/ProductsSection";
+import 'swiper/css'
+import 'swiper/css/navigation'
 
 export default function Home() {
+
+ 
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
+  <div className="min-h-screen bg-olive-50">
+      <div
+        className="
+          max-w-[90rm]
+          mx-auto
+          px-4 md:px-8          
+        "
+      >
+         {/*  
+  <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
+    <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
         <Image
           className="dark:invert"
           src="/next.svg"
@@ -16,6 +32,8 @@ export default function Home() {
           <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
             To get started, edit the page.tsx file.
           </h1>
+          <Link href="/cart"  >Cart</Link>
+          <Link href="/login"  >login</Link>
           <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
             Looking for a starting point or more instructions? Head over to{" "}
             <a
@@ -60,6 +78,13 @@ export default function Home() {
           </a>
         </div>
       </main>
+      */}
+      <Offers />
+    <Category />
+     <ProductsSection />
+
+      </div>
     </div>
+  
   );
 }

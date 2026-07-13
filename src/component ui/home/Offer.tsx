@@ -7,7 +7,7 @@ import offer2 from "../../../public/img/offer2.jpg";
 import offer3 from "../../../public/img/offer3.jpg";
 
 import Slider from "../shared/slider/Slider";
-import { products } from "@/src/lib/api/Products";
+import { OffersInfo } from "@/src/lib/api/Products";
 import { Button } from "../ui/Button";
 
 const offers = [offer1, offer2, offer3];
@@ -24,7 +24,7 @@ export default function Offers() {
           spaceBetween: 20,
         }}
       >
-        {Object.values(products)
+        {Object.values(OffersInfo)
           .flat()
           .slice(0, 5)
           .map((item, index) => {

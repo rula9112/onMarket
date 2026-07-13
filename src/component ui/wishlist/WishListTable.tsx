@@ -2,11 +2,8 @@
 import { ProductItem } from "@/src/types/Product";
 import WishListItemRow from "./WishListItemRowold";
 import { useAppSelector } from "@/src/lib/store/hooks";
-import WishlistCard from "./WishlistCard";
 import EmptyWishlist from "./EmptyWishList";
 import ProductCard from "../product/ProductCard";
-/*********old */
-            //    <WishListItemRow item={thisItem} key={index} />
 
 
 export default function WishListTable(){

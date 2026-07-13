@@ -4,20 +4,24 @@ import userImage from '@/public/img/user.png'
 import { UserInfoProps } from "@/src/types/profile";
 
 export default function ProfileInfo({user}:UserInfoProps){
+  const userData_Image = user.image
     return(
         <div className="bg-white rounded-2xl shadow-sm p-6">
   <div className="flex items-center gap-4">
-    {/* <Image
-      src={{
-        user.image ? user.image: userImage   }}
+     <Image
+      src={
+      userData_Image  ? userData_Image : userImage   }
       alt="user"
       className="w-20 h-20 rounded-full"
-    /> */}
-    <Image
+    /> 
+    {/*
+       <Image
       src={userImage }
       alt="user"
       className="w-20 h-20 rounded-full"
     />
+     */}
+ 
 
     <div>
       <h2 className="text-xl font-bold">{user.firstName} {user.lastName}</h2>

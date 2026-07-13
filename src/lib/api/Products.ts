@@ -1,26 +1,12 @@
 import { ProductItem, ProductsResponse } from "./../../types/Product";
 
-// 1. استخدم {} للواجهة (Interface)
-export interface ProductsData {
-  fragrances: ProductItem[];
-  beauty: ProductItem[];
-}
-
-// 2. استخدم {} للكائن (Object)
-export const products: ProductsData = {
-  fragrances: [
-   { id: 5, title: "hgpkefdoijfdfls", price: 9.1, category: "fragrances" ,brand:"apple" ,rating:2.6 ,description:"hhgy iek n uoiero nhpwebfwb bgodi goowwb bgodi goowenbf"},
-    { id: 1, title: "ffp je", price: 22.5, category: "fragrances" ,brand:"xaumi" ,rating:2.6  ,description:"hhgy iek n uoiero nhpwebf iek n uoiero nhpwebfwb bgodi goowenbf"},
-    { id: 2, title: "metw", price: 58.2, category: "fragrances" ,brand:"samaung" ,rating:2.6  ,description:"hhgy iek n uoiero nhpwebfw nhpwebfwb bgodi goowenbf"},
-    { id: 8, title: "opopt", price: 2.2, category: "fragrances" ,brand:"samaung" ,rating:2.6  ,description:"hhgy iek n uoiero nhpwebfwb bgodi goowenbf"},
-    { id: 4, title: "phonnn euww", price: 85.2, category: "fragrances",brand:"xaumi" ,rating:2.6  ,description:"hhgy iek n uoiero nhpwebfwb bgodi goowenbf"},
-    { id: 3, title: "xawmi", price: 7.2, category: "fragrances" ,brand:"nokia" ,rating:2.6  ,description:"hhgy iek n uoiero nhpwebfn uoiero nhpwebfwb bgodi goowenbf"}
-  ],
-  beauty: [
-  { id: 52, title: "new waw", price: 58.2, category: "beauty",brand:"veta" ,rating:4.5  ,description:"hhgy iek n uoiero nhpwebfwb bgodi goowenbf"},
-    { id: 53, title: "kall", price: 3.3, category: "beauty" ,brand:"lensess" ,rating:2.6  ,description:"hhgy iek n uoiero nhpwebfn uoiero nhpwebfwb bgodi goowenbf"}
-   ],
-};
+/*****offers Array */
+export const OffersInfo = [
+  {id:1,title:"Discount 10%" ,description:"on Beauty Products"},
+  {id:2,title:"Discount 20%" , description:"on Phones exesuaris" },
+  {id:4,title:"+ Free Product",description:"in airPords" },
+  {id:5,title:"Free Delevery" ,description:"" },
+]
 
 
 /***************get Product By ID */
@@ -96,6 +82,30 @@ export async function GetAPIProductsByCategory({category,}: { category: string;}
     return await res.json();
   } catch (error) {
     console.error('Fetch error:', error);
+    return null;
+  }
+}
+
+/******************** search product */
+export async function SearchResultAPI(query:string): Promise<ProductsResponse | null> 
+{
+  try {
+    const res = await fetch(
+      `https://dummyjson.com/products/search?q=${query}`,
+      {
+        cache: 'no-store',
+        next: { revalidate: 3600 },
+        headers: { Accept: 'application/json' },
+      }
+    );
+
+    if (!res.ok) {
+      throw new Error('Failed to search products');
+    }
+
+    return await res.json();
+  } catch (error) {
+    console.error('search error:', error);
     return null;
   }
 }

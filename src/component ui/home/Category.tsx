@@ -26,8 +26,8 @@ export default async function Categories() {
 
   //
    return (
-    <section className="py- px-4 md:px-10 lg:px-14">
-      {/* Header */}
+    <section className="py-6 px-4 md:px-10 lg:px-14">
+      {/* Header 
       <div className="mb-10">
         <h2 className=" text-2xl md:text-3xl font-bold text-gray-900">
          Categories
@@ -37,6 +37,7 @@ export default async function Categories() {
          Discover all The Categories available in the store
         </p>
       </div>
+      */}
 <CategoryItem />
     </section>
   );

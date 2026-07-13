@@ -29,7 +29,6 @@ export default function LoginForm() {
  const handleLogin = async (e: FormEvent<HTMLFormElement>): Promise<void> => {
   e.preventDefault();
 
-  console.log('Logging in with:', formData); // ✅ للتجربة
 
   const resultAction = await dispatch(
     loginUser({ 
@@ -38,11 +37,7 @@ export default function LoginForm() {
     })
   );
 
-  console.log('Result action:', resultAction); // ✅ للتجربة
-  console.log('Type:', resultAction.type); // ✅ للتجربة
-
   if (loginUser.fulfilled.match(resultAction)) {
-    console.log('Login successful!'); // ✅ للتجربة
     router.push("/");
   } else {
     console.log('Login failed:', resultAction.payload); // ✅ للتجربة

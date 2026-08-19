@@ -6,7 +6,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState, ChangeEvent, FormEvent } from "react";
 import { useAppDispatch, useAppSelector } from "@/src/lib/store/hooks";
-import { loginUser } from "@/src/features/auth/authAction";
+import { fetchUserProfile, loginUser } from "@/src/features/auth/authAction";
 
 export default function LoginForm() {
   const router = useRouter();
@@ -29,19 +29,25 @@ export default function LoginForm() {
  const handleLogin = async (e: FormEvent<HTMLFormElement>): Promise<void> => {
   e.preventDefault();
 
-
   const resultAction = await dispatch(
-    loginUser({ 
-      username: formData.username, 
-      password: formData.password 
+    loginUser({
+      username: formData.username,
+      password: formData.password,
     })
   );
 
   if (loginUser.fulfilled.match(resultAction)) {
-    router.push("/");
+    const profileAction = await dispatch(fetchUserProfile());
+
+    if (fetchUserProfile.fulfilled.match(profileAction)) {
+      router.push("/");
+    } else {
+      console.log("Profile failed:", profileAction.payload);
+    }
   } else {
-    console.log('Login failed:', resultAction.payload); // ✅ للتجربة
-    const errorMessage = (resultAction.payload as { message?: string })?.message || "فشل تسجيل الدخول";
+    console.log("Login failed:", resultAction.payload);
+    const errorMessage =
+      (resultAction.payload as { message?: string })?.message || "فشل تسجيل الدخول";
     alert(errorMessage);
   }
 };

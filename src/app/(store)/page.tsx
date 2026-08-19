@@ -5,13 +5,13 @@ import SearchResults from "@/src/component ui/product/SearchResults";
 import 'swiper/css'
 import 'swiper/css/navigation'
 
-export default function Home({
+export default function Home(/* {
   searchParams,
 }: {
   searchParams: { q?: string };
-}) {
+} */) {
 
-  const query = searchParams.q ?? "";
+  //const query = searchParams.q ?? "";
   
 
   return (
@@ -24,7 +24,7 @@ export default function Home({
         "
       >
     <Category />
-     <SearchResults />
+     {/* <SearchResults /> */}
      <ProductsSection />
 
       </div>

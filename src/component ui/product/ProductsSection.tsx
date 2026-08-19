@@ -1,6 +1,5 @@
 
 import ProductsSlider from "./ProductsSlider";
-import { products } from "@/src/lib/api/Products";
 export default function ProductsSection() {
 
 

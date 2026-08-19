@@ -16,7 +16,7 @@ export async function GetAPIProductByID(id:number): Promise<ProductItem | null>
     const res = await fetch(
       `https://dummyjson.com/product/${id}`,
       {
-        cache: 'no-store',
+        
         next: { revalidate: 3600 },
         headers: { Accept: 'application/json' },
       }
@@ -40,7 +40,7 @@ export async function GetAPI10Products(): Promise<ProductsResponse | null>
     const res = await fetch(
       `https://dummyjson.com/products?limit=10&skip=10&select=title,price`,
       {
-        cache: 'no-store',
+        
         next: { revalidate: 3600 },
         headers: { Accept: 'application/json' },
       }
@@ -69,7 +69,7 @@ export async function GetAPIProductsByCategory({category,}: { category: string;}
     const res = await fetch(
       `https://dummyjson.com/products/category/${encodeURIComponent(category)}`,
       {
-        cache: 'no-store',
+        
         next: { revalidate: 3600 },
         headers: { Accept: 'application/json' },
       }
@@ -93,7 +93,7 @@ export async function SearchResultAPI(query:string): Promise<ProductsResponse | 
     const res = await fetch(
       `https://dummyjson.com/products/search?q=${query}`,
       {
-        cache: 'no-store',
+        
         next: { revalidate: 3600 },
         headers: { Accept: 'application/json' },
       }

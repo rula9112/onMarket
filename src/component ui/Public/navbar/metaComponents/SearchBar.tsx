@@ -1,31 +1,25 @@
+// @/src/component ui/SearchBar.tsx (أو المسار الصحيح للملف)
+'use client';
 
-'use client'
-
-
+import { Suspense } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 
-
-export default function SearchBar() {
-
-
- const router = useRouter();
+function SearchContent() {
+  const router = useRouter();
   const searchParams = useSearchParams();
-
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
     const params = new URLSearchParams(searchParams.toString());
 
-
     if (value) params.set("q", value);
     else params.delete("q");
-
 
     router.push(`?${params.toString()}`);
   };
 
-
-  return( <div className="relative w-full">
+  return (
+    <div className="relative w-full">
       <input
         type="text"
         placeholder="ابحث عن المنتجات..."
@@ -42,12 +36,8 @@ export default function SearchBar() {
           focus:bg-white
           transition-all
         "
-       onChange={handleChange}
-
-
+        onChange={handleChange}
       />
-
-
       <div
         className="
           absolute
@@ -58,7 +48,14 @@ export default function SearchBar() {
       >
         🔍
       </div>
-    </div> );
+    </div>
+  );
+}
 
-
-  }
+export default function SearchBar() {
+  return (
+    <Suspense fallback={<div className="text-zinc-500">جاري تحميل شريط البحث...</div>}>
+      <SearchContent />
+    </Suspense>
+  );
+}

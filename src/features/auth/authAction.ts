@@ -132,15 +132,21 @@ export const fetchUserProfile = createAsyncThunk<
     const token = thunkAPI.getState().auth.token;
 
     if (!token) {
-      return thunkAPI.rejectWithValue(
-        "No active session"
-      );
+      return thunkAPI.rejectWithValue("No active session");
     }
 
-    return {
-      id: 1,
-      username: "TestUser",
-      email: "test@test.com",
-    };
+    const res = await fetch("https://dummyjson.com/auth/me", {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+
+    if (!res.ok) {
+      return thunkAPI.rejectWithValue("Failed to load profile");
+    }
+
+    const user: User = await res.json();
+    return user;
   }
 );

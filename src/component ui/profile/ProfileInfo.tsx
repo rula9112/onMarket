@@ -8,12 +8,13 @@ export default function ProfileInfo({user}:UserInfoProps){
     return(
         <div className="bg-white rounded-2xl shadow-sm p-6">
   <div className="flex items-center gap-4">
-     <Image
-      src={
-      userData_Image  ? userData_Image : userImage   }
-      alt="user"
-      className="w-20 h-20 rounded-full"
-    /> 
+    <Image
+  src={userData_Image ? userData_Image : userImage}
+  alt="user"
+  width={64}
+  height={64}
+  className="rounded-full object-cover"
+/>
     {/*
        <Image
       src={userImage }

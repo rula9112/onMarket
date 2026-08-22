@@ -38,7 +38,9 @@ export default function UserHeader({user}:UserInfoProps) {
       className="w-20 h-20 rounded-full"
     /> */}
           <Image
-            src={userImage}
+            src={user.image}
+            width={50}
+            height={50}
             alt="user"
             className="w-full h-full object-cover"
           />

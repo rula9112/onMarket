@@ -16,7 +16,7 @@ export default function ProfileMainComponent(){
     const {user , token} =useAppSelector(state => state.auth)
      const [activeSection, setActiveSection] = useState<ActiveSection>('overview');
 if(!user || !token ){return<UserNotExisting />}
-console.log("usr" ,user)
+/*******for delete************/   console.log("usr" ,user)
  const renderContent = () => {
     switch (activeSection) {
       case 'overview':
@@ -26,7 +26,9 @@ console.log("usr" ,user)
             <StatsCards />
             <div className="py-5 border-t border-gray-200">
             <AddressSection user={user} />
-            </div>    
+            </div>  
+
+            
           </div>
         );
       case 'orders':

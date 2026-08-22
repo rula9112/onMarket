@@ -11,7 +11,6 @@ import {
 } from "./authAction";
 import { AuthState, User } from "@/src/types/Auth";
 
-
 const initialState: AuthState = {
   user: null,
   token: null,
@@ -59,7 +58,6 @@ const authSlice = createSlice({
 
       .addCase(loginUser.fulfilled, (state, action) => {
         state.status = "succeeded";
-        
         state.token = action.payload.accessToken;
         state.isAuthenticated = true;
       })

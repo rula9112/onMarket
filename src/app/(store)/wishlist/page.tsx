@@ -21,11 +21,11 @@ import WishListTable from "@/src/component ui/wishlist/WishListTable";
                 text-zinc-900
               "
             >
-              المفضلة
+              Favorites
             </h1>
 
             <p className="mt-2 text-zinc-500">
-              المنتجات التي قمت بحفظها
+              Products you have saved
             </p>
           </div>
 

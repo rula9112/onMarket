@@ -35,6 +35,10 @@ export default function ProductCard({ item }: ProductProps) {
       : dispatch(addToWishList(item));
   };
 
+  const imageSrc =
+  item.images?.[0] ??
+  item.thumbnail ??
+  "/images/product-placeholder.png";
 
 
   /***************************old cards */
@@ -125,7 +129,9 @@ export default function ProductCard({ item }: ProductProps) {
       {/* Image */}
       <div className="relative overflow-hidden">
         <Image
-          src={noImageAvailable}
+          src={imageSrc}
+          width={40}
+          height={60}
           alt={item.title}
           className="
             w-full
@@ -211,11 +217,11 @@ export default function ProductCard({ item }: ProductProps) {
         {/* Buttons */}
         <div className="mt-4 space-y-2 flex justify-between">
           <Button  variant="primary" size='small' onClick={handleAddToCart}>
-            إضافة للسلة
+            Add to Cart
           </Button>
           <Link href={`/product/${item.id}`}>
            <Button  variant="outlinePrimary"  size='small'>
-            عرض المنتج
+            Details
           </Button>
           </Link>
          

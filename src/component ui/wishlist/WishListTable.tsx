@@ -1,6 +1,5 @@
 'use client'
 import { ProductItem } from "@/src/types/Product";
-import WishListItemRow from "./WishListItemRowold";
 import { useAppSelector } from "@/src/lib/store/hooks";
 import EmptyWishlist from "./EmptyWishList";
 import ProductCard from "../product/ProductCard";

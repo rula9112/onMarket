@@ -1,4 +1,4 @@
-'use client';
+
 
 import { ProductIDProps } from "@/src/types/Product";
 import { GetAPIProductByID } from "@/src/lib/api/Products";

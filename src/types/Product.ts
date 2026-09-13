@@ -35,7 +35,7 @@ export type ProductItem = {
     barcode: string;
     qrCode: string;
   };
-  images: string[];
+ images?: string[];
   thumbnail: string;
 };
 

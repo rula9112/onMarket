@@ -36,9 +36,9 @@ export default function ProductCard({ item }: ProductProps) {
   };
 
   const imageSrc =
-  item.images?.[0] ??
-  item.thumbnail ??
-  "/images/product-placeholder.png";
+    item.images?.[0] ||
+    item.thumbnail ||
+    "/images/product-placeholder.png";
 
 
   /***************************old cards */
@@ -130,8 +130,8 @@ export default function ProductCard({ item }: ProductProps) {
       <div className="relative overflow-hidden">
         <Image
           src={imageSrc}
-          width={40}
-          height={60}
+          width={400}
+          height={600}
           alt={item.title}
           className="
             w-full
@@ -216,10 +216,10 @@ export default function ProductCard({ item }: ProductProps) {
 
         {/* Buttons */}
         <div className="mt-4 space-y-2 flex justify-between">
-          <Button  variant="primary" size='small' onClick={handleAddToCart}>
-            Add to Cart
+          <Button  variant="primary" size='small'  onClick={handleAddToCart}>
+            + Cart
           </Button>
-          <Link href={`/product/${item.id}`}>
+          <Link   href={`/product/${item.id}`}>
            <Button  variant="outlinePrimary"  size='small'>
             Details
           </Button>

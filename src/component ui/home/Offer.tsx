@@ -18,7 +18,7 @@ export default function Offers() {
       <Slider
         swiperSetting={{
           slidesPerView0: 1,
-          slidesPerView500: 1,
+          slidesPerView442: 1,
           slidesPerView768: 1,
           slidesPerView992: 1,
           spaceBetween: 20,

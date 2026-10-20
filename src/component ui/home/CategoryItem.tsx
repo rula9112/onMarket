@@ -57,7 +57,7 @@ if(!categories) return null;
          <Slider
         swiperSetting={{
           slidesPerView0: 2.2,
-          slidesPerView500: 3.2,
+          slidesPerView442: 3.2,
           slidesPerView768: 4.5,
           slidesPerView992: 7,
           spaceBetween: 15,

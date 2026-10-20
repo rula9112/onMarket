@@ -3,14 +3,13 @@
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { ArrowUpRight, Heart, Plus, Star } from 'lucide-react';
 import { addToCart } from '@/src/features/cart/cartSlice';
-import noImageAvailable from '@/public/img/noImageAvailable.jpeg'
+import noImageAvailable from '@/public/img/noImageAvailable.jpeg';
 import { ProductItem, ProductProps } from '@/src/types/Product';
 import { useAppDispatch, useAppSelector } from '@/src/lib/store/hooks';
 import { addToWishList, removeFromWishList } from '@/src/features/wishlist/wishlistSlice';
 import { Button } from '../ui/Button';
-
-
 
 export default function ProductCard({ item }: ProductProps) {
   const { wishList } = useAppSelector((state) => state.wishList);
@@ -26,7 +25,7 @@ export default function ProductCard({ item }: ProductProps) {
 
   const handleAddToCart = () => {
     const quantity = 1;
-    dispatch(addToCart({ item , quantity }));
+    dispatch(addToCart({ item, quantity }));
   };
 
   const handleAddToWishList = () => {
@@ -35,198 +34,82 @@ export default function ProductCard({ item }: ProductProps) {
       : dispatch(addToWishList(item));
   };
 
-  const imageSrc =
-    item.images?.[0] ||
-    item.thumbnail ||
-    "/images/product-placeholder.png";
-
-
-  /***************************old cards */
-//     <div
-//       className="w-full h-80 rounded-xl bg-white mx-auto border border-gray-200 shadow-lg overflow-hidden hover:shadow-xl relative"
-//     >
-//       <div
-//         onClick={handleAddToWishList}
-//         className={`cursor-pointer top-5 left-3 w-1/4 h-auto absolute z-50 ${
-//           existing >= 0 ? 'text-red-800' : 'text-gray-900'
-//         }`}
-//       >
-// {/*<Heart size={28} fill={existing >= 0 ? '#e02424' : '#fff'} />*/}
-//       </div>
-
-//       <div className="z-40 w-full h-full absolute">
-//         <div className="h-44 flex justify-center">
-//           {item.images ? (
-//             <img
-//               className="h-full object-cover"
-//               src={item.images}
-//               alt="Product Image"
-//             />
-//           ) : (
-//             <Image
-//               className="w-96 object-cover"
-//               src={NoImageAvailable}
-//               alt="No image available"
-//               width={384} // عدّل حسب حجم الصورة
-//               height={384}
-//             />
-//           )}
-//         </div>
-
-//         <div className="p-3 md:p-5">
-//           <h3 className="text-md font-semibold text-gray-800">{item.title}</h3>
-//           <div className="flex items-center justify-between mt-3">
-//             <span className="text-lg font-bold text-orange-500">{item.price}</span>
-//           </div>
-
-//           <div className="flex items-center justify-between mt-2">
-//             <button
-//               className="btn-primary-500 btn text-xs font-semibold"
-//               onClick={() => handleAddToCart(item)}
-//             >
-//               Add to Cart
-//             </button>
-
-//             <Link
-//               href={`/product/${item.id}`}
-//               className="btn btn-primary-outline text-sm font-semibold inline-flex"
-//             >
-//               Details
-//               <svg
-//                 className="rtl:rotate-180 hidden w-3.5 h-3.5 ms-2 md:inline-flex"
-//                 aria-hidden="true"
-//                 xmlns="http://www.w3.org/2000/svg"
-//                 fill="none"
-//                 viewBox="0 0 14 10"
-//               >
-//                 <path
-//                   stroke="currentColor"
-//                   strokeLinecap="round"
-//                   strokeLinejoin="round"
-//                   strokeWidth="2"
-//                   d="M1 5h12m0 0L9 1m4 4L9 9"
-//                 />
-//               </svg>
-//             </Link>
-//           </div>
-//         </div>
-//       </div>
-//     </div>
+  const imageSrc = item.images?.[0] || item.thumbnail || noImageAvailable;
 
   return (
- <div
-      className="
-        group
-        bg-white
-        rounded-3xl
-        overflow-hidden
-        shadow-sm
-        border border-zinc-100
-        hover:shadow-xl
-        transition-all duration-300
-      "
-    >
-      {/* Image */}
-      <div className="relative overflow-hidden">
+    <article className="group relative isolate overflow-hidden rounded-3xl border border-olive-100 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-orange-200 hover:shadow-xl">
+      {/* This overlay provides the requested full-card navigation; controls stay above it. */}
+      <Link
+        href={`/product/${item.id}`}
+        aria-label={`View ${item.title} details`}
+        className="absolute inset-0 z-10 rounded-3xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-orange-500"
+      >
+        <span className="sr-only">View {item.title} details</span>
+      </Link>
+
+      <div className="relative flex h-56 items-center justify-center overflow-hidden bg-olive-50 p-5 sm:h-64">
         <Image
           src={imageSrc}
           width={400}
-          height={600}
+          height={400}
           alt={item.title}
-          className="
-            w-full
-            h-64
-            object-cover
-            transition-transform
-            duration-500
-            group-hover:scale-105
-          "
+          className="h-full w-full object-contain transition-transform duration-500 group-hover:scale-105"
         />
 
-        {/* Remove Favorite */}
-      <button className={`${existing >= 0 ? 'bg-red-200' : 'bg-gray-50 border border-zinc-300'} absolute
-      cursor-pointer
-      transition-all
-    top-3 right-3
-    w-11 h-11
-    rounded-full
-    backdrop-blur
-    flex items-center justify-center
-    hover:scale-110`} 
-  onClick={handleAddToWishList}
->
+        <span className="pointer-events-none absolute left-4 top-4 rounded-full border border-olive-100 bg-white/90 px-3 py-1 text-xs font-medium capitalize text-olive-800 shadow-sm backdrop-blur">
+          {item.category}
+        </span>
 
-               {existing >= 0 ? "❤️" : "🤍"}
+        <button
+          type="button"
+          onClick={handleAddToWishList}
+          aria-label={existing >= 0 ? 'Remove from wishlist' : 'Add to wishlist'}
+          className={`absolute right-4 top-4 z-20 flex h-10 w-10 items-center justify-center rounded-full border bg-white/95 shadow-sm transition hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange-400 ${
+            existing >= 0
+              ? 'border-red-100 text-red-500'
+              : 'border-olive-100 text-olive-700 hover:text-red-500'
+          }`}
+        >
+          <Heart className={`h-5 w-5 ${existing >= 0 ? 'fill-current' : ''}`} />
         </button>
-         
-
-        {/* Discount Badge */}
-        <div
-          className="
-            absolute
-            top-3 left-3
-            px-3 py-1
-            rounded-full
-            bg-orange-700
-            text-white
-            text-xs
-            font-medium
-          "
-        >
-          -20%
-        </div>
       </div>
 
-      {/* Content */}
-      <div className="p-4">
-        <h3
-          className="
-            text-base
-            font-semibold
-            text-zinc-800
-            line-clamp-1
-          "
-        >
-          {item.title}
-        </h3>
+    <div className="pointer-events-none relative z-20 flex min-h-40 flex-col p-5">
+  <div className="h-12 overflow-y-auto pr-1">
+    <h3 className="text-base font-semibold leading-6 text-olive-950">
+      {item.title}
+    </h3>
+  </div>
 
-        <div className="flex items-center gap-2 mt-3">
-          <span
-            className="
-              text-lg
-              font-bold
-              text-black
-            "
-          >
-            ${item.price}
-          </span>
+  <div className="mt-3 flex items-center gap-1.5 text-sm text-olive-600">
+    <Star className="h-4 w-4 fill-orange-400 text-orange-400" />
+    <span>{item.rating}</span>
+    <span className="mx-1 h-1 w-1 rounded-full bg-olive-300" />
+    <span className="capitalize">{item.brand}</span>
+  </div>
 
-          {item.price && (
-            <span
-              className="
-                text-sm
-                text-zinc-400
-                line-through
-              "
-            >
-              ${item.price}
-            </span>
-          )}
-        </div>
+  <div className="mt-auto flex flex-col gap-3 pt-5 sm:flex-row sm:items-center sm:justify-between">
+    <span className="text-xl font-bold text-olive-950">
+      ${item.price}
+    </span>
 
-        {/* Buttons */}
-        <div className="mt-4 space-y-2 flex justify-between">
-          <Button  variant="primary" size='small'  onClick={handleAddToCart}>
-            + Cart
-          </Button>
-          <Link   href={`/product/${item.id}`}>
-           <Button  variant="outlinePrimary"  size='small'>
-            Details
-          </Button>
-          </Link>
-         
-        </div>
-      </div>
-    </div>
+    <Button
+      type="button"
+      variant="primary"
+      onClick={handleAddToCart}
+      aria-label={`Add ${item.title} to cart`}
+      className="
+        pointer-events-auto
+        flex h-11 w-full items-center justify-center gap-2
+        rounded-xl px-4 text-sm font-semibold shadow-sm
+        sm:min-h-11 sm:w-11 sm:shrink-0 sm:justify-center sm:rounded-full sm:p-0
+      "
+    >
+      <Plus className="h-5 w-5" />
+      <span className="sm:hidden text-sm">Add</span>
+    </Button>
+  </div>
+</div>
+    </article>
   );
 }

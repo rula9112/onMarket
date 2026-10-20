@@ -58,7 +58,7 @@ export default function LoginForm() {
       title="Login"
       subtitle="Join us To Start the Shopping "
     >
-      <form className="space-y-3 px-8" onSubmit={handleLogin}>        
+      <form className="space-y-2 px-0" onSubmit={handleLogin}>
         <AuthInput 
           type="text" 
           name="username"
@@ -67,7 +67,7 @@ export default function LoginForm() {
           value={formData.username}
           onChange={handleChange}
         />
-        
+
         <AuthInput 
           type="password" 
           name="password"
@@ -79,9 +79,11 @@ export default function LoginForm() {
 
         {/* Submit */}
         <Button
-        type="submit"
-             disabled={status === "pending"}
-         variant="primary" className="w-full my-3">
+          type="submit"
+          disabled={status === "pending"}
+          variant="primary"
+          className="!my-3 !w-full !rounded-2xl !py-3 !font-semibold shadow-sm"
+        >
              {status === "pending" ? (
               <span className="flex items-center justify-center gap-2">
                 <svg className="animate-spin h-5 w-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -96,9 +98,9 @@ export default function LoginForm() {
         </Button>
 
         {/* Login */}
-        <p className="pt-3 my-3 text-center text-sm text-zinc-500">
+        <p className="my-4 pt-3 text-center text-sm leading-6 text-olive-600">
           Don't ypu have an Account
-          <Link className="mx-2 text-black font-semibold cursor-pointer" href={'/register'}>
+          <Link className="mx-2 font-semibold text-orange-700 underline-offset-4 transition hover:text-orange-800 hover:underline" href={'/register'}>
              Creat An Account
           </Link>
         </p>

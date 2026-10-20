@@ -9,23 +9,28 @@ export function CartItemRow() {
 
   const { cartItems } = useAppSelector((state) => state.cart); 
   return (
-       <div className="lg:col-span-2 space-y-5 p-6 bg-white rounded-3xl border border-zinc-100 shadow-sm">
-        <div className={`${cartItems.length === 1 ? 'border-b border-gray-200 ': ''} `}>
-        {cartItems.length > 0 ? (
-        cartItems.map((cartItem: CartItemType , index) => (
-          <CartItem 
-            key={cartItem.id} 
-            currentItem={cartItem} 
-           
-          />
-        ))
-      ) : (
- 
-  <EmptyCart />
-   
-      )}
-        </div>
-
+    <section className="min-w-0 space-y-5 rounded-3xl border border-olive-100 bg-white p-4 shadow-sm sm:p-6 lg:col-span-2">
+      {cartItems.length > 0 ? (
+        <>
+          <div className="overflow-x-auto">
+            <div className="grid min-w-[620px] grid-cols-4 rounded-2xl bg-olive-50 px-4 py-3 text-sm font-semibold text-olive-700">
+              <span>المنتج</span>
+              <span className="text-center">الكمية</span>
+              <span className="text-center">الإجمالي</span>
+              <span className="text-center">إزالة</span>
+            </div>
           </div>
+          <div className="overflow-x-auto">
+            <div className="min-w-[620px] divide-y divide-olive-100">
+              {cartItems.map((cartItem: CartItemType) => (
+                <CartItem key={cartItem.id} currentItem={cartItem} />
+              ))}
+            </div>
+          </div>
+        </>
+      ) : (
+        <EmptyCart />
+      )}
+    </section>
   );
 }

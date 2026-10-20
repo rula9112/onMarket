@@ -24,7 +24,7 @@ if(!user || !token ){return<UserNotExisting />}
           <div className="space-y-6">
             <UserHeader user={user} />
             <StatsCards />
-            <div className="py-5 border-t border-gray-200">
+            <div className="border-t border-olive-200 py-5">
             <AddressSection user={user} />
             </div>  
 
@@ -48,24 +48,15 @@ if(!user || !token ){return<UserNotExisting />}
 
     
       return(
-         <div>     
-         <div
-          className="
-            grid
-            grid-cols-1
-            lg:grid-cols-4
-            gap-8
-          "
-        >
-          <ProfileSidebar 
-            activeSection={activeSection} 
-            onSectionChange={setActiveSection} />
-                <div className="lg:col-span-3">
-            {renderContent()}
+             <div className="grid min-w-0 grid-cols-1 items-start gap-5 lg:grid-cols-4 lg:gap-8">
+              <ProfileSidebar 
+                activeSection={activeSection} 
+                onSectionChange={setActiveSection} />
+                    <div className="min-w-0 lg:col-span-3">
+                {renderContent()}
            
-          </div>
-        </div>
+              </div>
             </div>
       
-    )
+        )
 }

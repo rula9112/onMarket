@@ -67,7 +67,7 @@ export default function RegisterForm() {
           value={formData.username}
           onChange={handleChange} 
         />
-        
+
         <AuthInput 
           type="email" 
           name="email"

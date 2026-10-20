@@ -19,8 +19,8 @@ export default function Slider({ children, swiperSetting }: SliderProps) {
         0: {
           slidesPerView: swiperSetting.slidesPerView0,
         },
-        500: {
-          slidesPerView: swiperSetting.slidesPerView500,
+        442: {
+          slidesPerView: swiperSetting.slidesPerView442,
         },
         768: {
           slidesPerView: swiperSetting.slidesPerView768,

@@ -6,17 +6,17 @@ export default function ProfileCheckoutCart(){
       const { totalPrice,totalItems } = useAppSelector((state) => state.cart); 
     
     return(
-         <div className="bg-white border border-zinc-100 rounded-3xl p-6 shadow ">
-    <div className="flex justify-between py-4 border-b border-zinc-200">
-      <span>Total</span>
-      <span className="font-bold">${totalPrice}</span>
+         <div className="rounded-3xl border border-olive-100 bg-white p-5 shadow-sm sm:p-6">
+    <div className="flex justify-between gap-3 border-b border-olive-100 py-4 text-sm text-olive-600 sm:text-base">
+      <span>الإجمالي</span>
+      <span className="font-bold text-olive-950">${totalPrice}</span>
     </div>
-    <div className="flex justify-between py-4 border-b border-zinc-200">
-      <span>Quantity</span>
-      <span className="font-bold">${totalItems}</span>
+    <div className="flex justify-between gap-3 border-b border-olive-100 py-4 text-sm text-olive-600 sm:text-base">
+      <span>عدد المنتجات</span>
+      <span className="font-bold text-olive-950">{totalItems}</span>
     </div>
-    <Button variant={'outlinePrimary'} className='w-full mt-5'>
-      Checkout
+    <Button variant={'outlinePrimary'} className='!mt-5 !w-full !rounded-2xl'>
+      إتمام الشراء
     </Button>
   </div>
     )

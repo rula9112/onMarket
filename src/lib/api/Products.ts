@@ -38,7 +38,7 @@ export async function GetAPI10Products(): Promise<ProductsResponse | null>
 {
   try {
     const res = await fetch(
-      `https://dummyjson.com/products?limit=10&skip=10&select=title,price`,
+      `https://dummyjson.com/products?limit=10&skip=10&select=title,price,category,rating,images,description`,
       {
         
         next: { revalidate: 3600 },

@@ -1,33 +1,38 @@
 import { CartItemRow} from '@/src/component ui/cart/CartItemRow' 
 import {CheckoutSummary } from '@/src/component ui/cart/CheckoutSummary' 
+import { ShoppingCart } from 'lucide-react'
 
 export default function CartPage(){
   return (
-       <div className="bg-olive-50 min-h-screen">
+       <div className="min-h-screen bg-olive-50">
       <div
         className="
-          max-w-[90rem]
-          mx-auto
-          px-4 md:px-8
-          py-10
+          mx-auto max-w-[90rem]
+          px-4 py-8 sm:px-6 sm:py-10 md:px-8 md:py-12
         "
       >
-        <h1
-          className="
-            text-3xl md:text-4xl
-            font-bold
-            text-zinc-900
-          "
-        >
-          سلة التسوق
-        </h1>
+        <header className="mb-8 flex items-center justify-between gap-4 rounded-3xl border border-olive-100 bg-white p-5 shadow-sm sm:mb-10 sm:p-7">
+          <div className="min-w-0">
+            <p className="mb-2 text-xs font-semibold tracking-[0.18em] text-orange-700 sm:text-sm">
+              ONMARKET
+            </p>
+            <h1 className="text-2xl font-bold tracking-tight text-olive-950 sm:text-3xl md:text-4xl">
+              سلة التسوق
+            </h1>
+            <p className="mt-2 text-sm leading-6 text-olive-600 sm:text-base">
+              راجع المنتجات التي أضفتها إلى سلتك
+            </p>
+            <div className="mt-4 h-1 w-14 rounded-full bg-orange-500" />
+          </div>
+          <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl border border-orange-100 bg-orange-50 text-olive-700 shadow-sm sm:h-14 sm:w-14">
+            <ShoppingCart className="h-6 w-6 sm:h-7 sm:w-7" strokeWidth={1.8} />
+          </div>
+        </header>
 
         <div
           className="
-            mt-10
-            grid grid-cols-1
-            lg:grid-cols-3
-            gap-8
+            grid grid-cols-1 items-start gap-6
+            lg:grid-cols-3 lg:gap-8
           "
         >
           {/* Cart Items */}

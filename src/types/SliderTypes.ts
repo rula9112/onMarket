@@ -4,7 +4,7 @@ export type SliderProps = {
   children: ReactNode;
   swiperSetting: {
     slidesPerView0: number;
-    slidesPerView500: number;
+    slidesPerView442: number;
     slidesPerView768: number;
     slidesPerView992:number;
     spaceBetween: number;

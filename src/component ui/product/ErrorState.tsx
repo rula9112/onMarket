@@ -28,25 +28,27 @@ export default function ErrorState({
 
   };
   return (
-    <div className="w-full h-96 flex justify-center items-center">
-   <div className="flex min-h-[300px] w-1/3  flex-col items-center justify-center rounded-xl border border-orange-200 bg-orange-50 p-8 text-center">
-      <AlertTriangle className="mb-4 h-14 w-14 text-orange-500" />
+    <div className="flex min-h-80 w-full items-center justify-center py-6">
+   <div className="flex min-h-[300px] w-full max-w-xl flex-col items-center justify-center rounded-3xl border border-orange-100 bg-gradient-to-b from-orange-50 to-white p-6 text-center shadow-sm sm:p-8">
+      <div className="mb-5 flex h-16 w-16 items-center justify-center rounded-full border border-orange-100 bg-white text-orange-500 shadow-sm ring-8 ring-orange-50">
+        <AlertTriangle className="h-8 w-8" />
+      </div>
 
-      <h2 className="mb-2 text-xl font-semibold text-gray-800">
+      <h2 className="mb-2 text-xl font-bold text-olive-950">
         Sorry !
       </h2>
 
-      <p className="mb-6 max-w-md text-gray-600">
+      <p className="mb-6 max-w-md text-sm leading-7 text-olive-600 sm:text-base">
         {message}
       </p>
 <Button 
   variant='primary' 
   onClick={handleHelpButton} 
-  className="flex items-center group"
+  className="flex items-center gap-2 !rounded-2xl !font-semibold shadow-sm"
 >
   <RefreshCw 
     size={18} 
-    className={`mr-2 transition-transform duration-300 group-hover:rotate-180 cursor-pointer`} />
+    className={`transition-transform duration-300 group-hover:rotate-180 cursor-pointer`} />
 
   <span>{HelpButton}</span>
 </Button>

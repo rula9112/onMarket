@@ -1,24 +1,19 @@
-import userImage from '@/public/img/user.png'
-import { User } from '@/src/types/Auth'
 import { UserInfoProps } from '@/src/types/profile'
 import Image from 'next/image'
 
 export default function UserHeader({user}:UserInfoProps) {
+  const imgSrc = user.image;
   return (
     <div
       className="
-        bg-white
-        rounded-3xl
-        p-6
-        border border-zinc-100
-        shadow-sm
+        rounded-3xl border border-olive-100 bg-white p-5 shadow-sm sm:p-6
       "
     >
       <div
         className="
           flex
           items-center
-          gap-5
+          gap-4 sm:gap-5
           flex-wrap
         "
       >
@@ -28,20 +23,20 @@ export default function UserHeader({user}:UserInfoProps) {
             w-24 h-24
             rounded-full
             overflow-hidden
-            bg-zinc-100
+            border-4 border-white bg-olive-100 shadow-sm ring-1 ring-olive-100
           "
         >
              {/* <Image
       src={{
         user.image ? user.image: userImage   }}
-      alt="user"
+      alt="صورة المستخدم"
       className="w-20 h-20 rounded-full"
     /> */}
           <Image
-            src={user.image}
+            src={imgSrc}
             width={50}
             height={50}
-            alt="user"
+            alt="صورة المستخدم"
             className="w-full h-full object-cover"
           />
         </div>
@@ -50,15 +45,13 @@ export default function UserHeader({user}:UserInfoProps) {
         <div className="flex-1">
           <h1
             className="
-              text-2xl
-              font-bold
-              text-zinc-900
+              text-xl font-bold text-olive-950 sm:text-2xl
             "
           >
             {user.username}
                       </h1>
 
-          <p className="mt-1 text-zinc-500">
+          <p className="mt-1 break-all text-sm text-olive-600 sm:text-base">
             {user.email}
           </p>
 {/* 

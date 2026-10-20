@@ -11,7 +11,6 @@ import ErrorState from "./ErrorState";
 type SearchResult = {
   products: any[];
 };
-
 function SearchContent() {
   const searchParams = useSearchParams();
   const q = searchParams.get("q") ?? "";

@@ -51,9 +51,9 @@ export default async function ProductsSlider({
       <Slider
         swiperSetting={{
           slidesPerView0: 1.5,
-          slidesPerView500: 2.5,
-          slidesPerView768: 3.5,
-          slidesPerView992: 5,
+          slidesPerView442: 2.5,
+          slidesPerView768: 3,
+          slidesPerView992: 4,
           spaceBetween: 24,
         }}
       >

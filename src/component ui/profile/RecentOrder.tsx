@@ -11,11 +11,11 @@ function OrderItem({
 }: OrderItemProps) {
   const statusStyles = {
     "قيد التنفيذ":
-      "bg-yellow-100 text-yellow-700",
+      "border border-orange-100 bg-orange-50 text-orange-800",
     مكتمل:
-      "bg-green-100 text-green-700",
+      "border border-olive-100 bg-olive-50 text-olive-800",
     ملغي:
-      "bg-red-100 text-red-700",
+      "border border-red-100 bg-red-50 text-red-700",
   }
 
   return (
@@ -26,8 +26,7 @@ function OrderItem({
         justify-between
         rounded-2xl
         border
-        border-zinc-100
-        p-4
+        border-olive-100 p-4
       "
     >
       <div>
@@ -35,18 +34,14 @@ function OrderItem({
           طلب #{orderNumber}
         </h3>
 
-        <p className="mt-1 text-sm text-zinc-500">
+        <p className="mt-1 text-sm text-olive-600">
           {total}
         </p>
       </div>
 
       <span
         className={`
-          rounded-full
-          px-3
-          py-1
-          text-sm
-          font-medium
+          rounded-full px-3 py-1 text-xs font-semibold sm:text-sm
           ${statusStyles[status]}
         `}
       >
@@ -62,18 +57,18 @@ export default function RecentOrders() {
       className="
         rounded-3xl
         border
-        border-zinc-100
+        border-olive-100
         bg-white
         p-6
         shadow-sm
       "
     >
-      <div className="flex items-center justify-between">
-        <h2 className="text-xl font-bold">
+      <div className="flex items-center justify-between gap-3">
+        <h2 className="text-xl font-bold text-olive-950">
           آخر الطلبات
         </h2>
 
-        <button className="font-medium text-black">
+        <button className="shrink-0 font-medium text-orange-700 transition hover:text-orange-800">
           عرض الكل
         </button>
       </div>

@@ -3,53 +3,35 @@ import { Button } from "../ui/Button";
 
 export default function EmptyCart() {
   return (
-    <div>
     <div
       className="
-        flex flex-col
-        items-center
-        justify-center
-        py-10
+        flex flex-col items-center justify-center rounded-3xl border border-dashed
+        border-olive-200 bg-gradient-to-b from-olive-50/80 to-white px-5 py-12
+        text-center sm:py-16
       "
     >
       <div
         className="
-          w-28 h-28
-          rounded-full
-          bg-zinc-100
-          flex items-center justify-center
-          text-5xl
+          flex h-24 w-24 items-center justify-center rounded-full border
+          border-orange-100 bg-white text-5xl shadow-sm ring-8 ring-olive-50
+          sm:h-28 sm:w-28 sm:text-6xl
         "
       >
         🛒
       </div>
 
-      <h2 className="mt-6 text-2xl font-bold">
+      <h2 className="mt-8 text-2xl font-bold text-olive-950 sm:text-3xl">
         السلة فارغة
       </h2>
 
-      <p className="mt-2 text-zinc-500">
+      <p className="mt-3 max-w-sm text-sm leading-6 text-olive-600 sm:text-base">
         ابدأ بإضافة منتجاتك المفضلة
       </p>
-{/* 
-      <button
-        className="
-          mt-6
-          px-6 py-3
-          rounded-2xl
-          bg-black
-          text-white
-        "
-      >
-        متابعة التسوق
-      </button> */}
-      <Link href={'/'}>
-      <Button className="w-50 mt-6">
-         متابعة التسوق
-      </Button>
-       </Link>
+      <Link href={'/'} className="mt-7 w-full sm:w-auto">
+        <Button className="!mt-0 !w-full !rounded-2xl !px-8 !font-semibold shadow-sm sm:!w-auto">
+          متابعة التسوق
+        </Button>
+      </Link>
     </div>
-    </div>
-
   )
 }

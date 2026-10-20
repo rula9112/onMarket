@@ -1,54 +1,28 @@
-"use client";
-
-import {
-  Navbar,
-  NavbarToggle,
-  NavbarCollapse,
-} from "flowbite-react";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
-import { Home, LogInIcon, LogOutIcon } from "lucide-react";
-import { logoutUser } from "@/src/features/auth/authAction";
-import { useAppDispatch, useAppSelector } from "@/src/lib/store/hooks";
-import SearchBar from "./metaComponents/SearchBar";
-import NavLink from "./metaComponents/NavLink";
+import { ArrowLeft } from "lucide-react";
 import Image from "next/image";
-import logo from '@/public/logo.png' 
-import { Button } from "../../ui/Button";
-export default function NavBar() {
-  const { token } = useAppSelector((state) => state.auth);
-  const dispatch = useAppDispatch();
-  const router = useRouter();
+import logo from "@/public/logo.png";
 
-  const handleLogout = async () => {
-    await dispatch(logoutUser());
-    router.push("/");
-  };
+export default function NavbarAuth() {
   return (
-    <header className="py-3 sticky top-0 z-50 bg-white/80 backdrop-blur-xl border-b border-zinc-100">
-      <Navbar className="max-w-7xl mx-auto px-4 md:px-8 rounded-none border-none bg-transparent p-0" fluid>
-        <div className="flex w-full items-center justify-between gap-4">
-          {/* Left */}
-          <div className="flex items-center gap-10">
-            <nav className="flex items-center gap-7">
-              <Link href={'/'}>
-                <Image src={logo} alt={'logo'} width={45} height={45}/>
-              </Link>
-            </nav>
-          </div>
-          
-              <Link
-                  href="/">
-                  <Button variant="outlinePrimary" className="flex gap-2">
-                     <Home className="w-5 h-5" />
-                  Home
-                  </Button>
-                </Link>
-    
-        </div>
+    <header className="sticky top-0 z-50 border-b border-olive-100 bg-white/95 backdrop-blur">
+      <div className="mx-auto flex h-18 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+        <Link href="/" aria-label="OnMarket home" className="flex items-center gap-3">
+          <Image src={logo} alt="" width={44} height={44} priority />
+          <span className="text-lg font-extrabold tracking-tight text-olive-950">
+            ONMARKET
+          </span>
+        </Link>
 
-  
-      </Navbar>
+        <Link
+          href="/"
+          dir="rtl"
+          className="inline-flex min-h-11 items-center gap-2 rounded-lg border border-olive-200 px-4 text-sm font-semibold text-olive-800 transition hover:border-orange-400 hover:bg-orange-50 hover:text-orange-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange-500 focus-visible:ring-offset-2"
+        >
+          <ArrowLeft aria-hidden="true" className="h-4 w-4" />
+          العودة إلى المتجر
+        </Link>
+        </div>
     </header>
   );
 }

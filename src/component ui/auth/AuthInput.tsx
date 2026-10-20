@@ -9,8 +9,8 @@ export default function AuthInput({
   onChange,
 }: AuthInputProps) {
   return (
-    <div className="py-2 my-5">
-      <label className="text-sm text-orange-500 font-semibold">
+    <div className="my-4">
+      <label className="text-sm font-semibold text-olive-800">
         {label}
       </label>
 
@@ -22,23 +22,21 @@ export default function AuthInput({
         placeholder={placeholder}
         className="
           w-full
-          h-8
-          p-2
+          h-12
+          rounded-2xl
+          border border-olive-200
+          bg-olive-50/50
+          px-4
           mt-2
-          backdrop-blur-sm
-          border-b border-orange-400
-          dark:border-gray-600
           text-sm
-          placeholder-gray-500
-          dark:placeholder-orange-400
-          focus:outline-none
-          focus:ring-2
-          focus:ring-orange-500/50
-          focus:border-transparent
-          focus:rounded-3xl
-          transition-all
-          duration-300
-          hover:shadow-md
+          text-olive-950
+          placeholder:text-olive-400
+          outline-none
+          transition
+          hover:border-olive-300
+          focus:border-orange-400
+          focus:ring-4
+          focus:ring-orange-100
         "
       />
     </div>
